@@ -1,0 +1,396 @@
+// ==|== primary styles =======================================================
+// ============================================================================
+
+// Foundation
+// ----------------------------------------------------------------------------
+html,
+button,
+input,
+optgroup,
+select,
+textarea {
+	font-family: 'adelle', Georgia,Times, 'Times New Roman', serif;
+	color: $hsla_brown;
+}
+html {
+	min-height: 100%;
+}
+body {
+	position: relative;
+	text-align: center;
+}
+::selection {
+	color: $hsla_L5;
+	background-color: $hsla_blue;
+}
+::-webkit-input-placeholder {
+	color: $hsla_L5;
+}
+::-moz-placeholder {
+	color: $hsla_L5;
+	opacity: 1;
+}
+:-ms-input-placeholder {
+	color: $hsla_L5;
+}
+
+// Transitions
+// ----------------------------------------------------------------------------
+a,
+input,
+button,
+div[class^="wrap_checkbox"] label::before {
+	transition: all 0.3s ease-in-out;
+}
+svg {
+	transition: fill 0.3s ease-in-out;
+}
+[data-overlay] {
+	transition: opacity 0.6s ease-in-out;
+}
+div.loader_overlay {
+	transition: opacity 0.4s ease-in-out;
+}
+// --- Animations --- \\
+@keyframes animShow {
+	0%   { opacity: 0; }
+	100% { opacity: 1; }
+}
+@keyframes animHide {
+	0%   { opacity: 1; left: 0; }
+	99%  { opacity: 0; left: 0; }
+	100% { opacity: 0; left: -200%; }
+}
+@keyframes anim360 {
+	to {
+		transform: rotate(360deg);
+	}
+}
+// --- FOUT --- \\
+html:not(.ie9) header {
+	opacity: 0; // begin by setting opacity to 0
+	animation: animShow 0.6s ease-in-out 0.2s forwards;
+}
+
+// CSS Loader
+// ----------------------------------------------------------------------------
+div.loader_overlay {
+	position: fixed;
+	z-index: 910;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	opacity: 0;
+	// visibility: hidden; // webkit will stop the animation if visibility is changed
+}
+div.loader_overlay.visible {
+	opacity: 1;
+}
+div.loader_overlay div.wrap_svg {
+	position: absolute;
+	z-index: 911;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	margin: auto;
+	width: 4.4rem;
+	height: 4.4rem;
+	animation: anim360 1s linear infinite forwards;
+}
+div.loader_overlay div.wrap_svg svg {
+	fill: $hsla_blue;
+}
+
+// Forms
+// ----------------------------------------------------------------------------
+input[type="text"],
+input[type="email"] {
+	padding: 0 1.6rem;
+	width: 100%;
+	height: 4.8rem; // 5.2rem;
+	font-size: 1.4rem; // 1.8rem;
+	color: $hsla_L5;
+	border-radius: 0.8rem;
+	box-shadow: inset 0 0 0 0.2rem $hsla_L86;
+}
+// --- Checkbox --- \\
+div[class^="wrap_checkbox"] {
+	// display: table;
+	// margin: 3.2rem auto 0 auto;
+}
+div[class^="wrap_checkbox"] label {
+	cursor: pointer;
+	display: block;
+	position: relative;
+	padding-left: 4rem;
+	text-align: left;
+}
+div[class^="wrap_checkbox"] label::before {
+	content: " ";
+	display: block;
+	position: absolute;
+	top: -0.2rem;
+	left: 0;
+	width: 2.2rem;
+	height: 2.2rem;
+	border: 0.2rem solid $hsla_L86;
+	border-radius: 0.5rem;
+	// box-shadow: inset 0 0 0 0.2rem $hsla_L86;
+}
+div[class^="wrap_checkbox"] label svg {
+	position: absolute;
+	top: 0.3rem;
+	left: 0.5rem;
+	width: 1.4rem;
+	height: 1.4rem;
+	fill: $hsla_blue;
+}
+// + interaction + \\
+div[class^="wrap_checkbox"]:hover label::before {
+	border-color: $hsla_L78;
+}
+div[class^="wrap_checkbox"]:active label {
+	color: #ccc;
+}
+/*
+input[type="checkbox"] + label:active::before {
+	border-color: $nm_orange-L;
+}
+input[type="checkbox"]:focus + label::before {
+	background-color: hsla(0,0%,12%,1); // lighter than: $nm_L7
+}
+input[type="checkbox"]:checked + label svg {
+	fill: $nm_orange;
+}
+*/
+
+// General Styles
+// ----------------------------------------------------------------------------
+// --- Containers --- \\
+[data-container] {
+	margin-left: auto;
+	margin-right: auto;
+}
+[data-container="width_948"] {
+	max-width: 94.8rem;
+}
+[data-container="width_720"] {
+	max-width: 72rem;
+}
+[data-container="width_490"] {
+	max-width: 49rem;
+}
+[data-container="width_420"] {
+	max-width: 42rem;
+}
+// --- SVGs --- \\
+#svgInject {
+	display: none;
+	visibility: hidden;
+}
+.wrap_svg {
+	display: block;
+}
+.wrap_svg svg {
+	width: 100%;
+	height: 100%;
+}
+svg.svg_inline {
+	display: inline; // [viewBox] attribute selector does not work in webkit
+}
+// --- Links --- \\
+/*
+a {
+	color: $hsla_blue;
+}
+a:hover {
+	color: $hsla_gold;
+}
+a:active {
+	color: $hsla_gold-D;
+}
+*/
+// + buttons + \\
+.button {
+	display: inline-block;
+	margin: 0 auto;
+	padding: 2.2rem 2.6rem; // computed height is 65px
+	font-size: 1.5rem;
+	letter-spacing: 0.2rem;
+	text-align: center;
+	text-transform: uppercase;
+	color: $hsla_L5;
+	border: 0.2rem solid $hsla_L5;
+}
+.button:hover {
+	color: $hsla_blue;
+	border-color: $hsla_blue;
+}
+.button:active {
+	// color: $hsla_gold-D;
+	// border-color: $hsla_gold-D;
+}
+// --- Overlay & Modal --- \\
+// created and added (also destroyed) to DOM via JS
+// opacity applied via JS | transition via CSS
+[data-overlay] {
+	position: fixed;
+	z-index: 900;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: hsla(0,0%,0%,0.8);
+}
+// + overlay active + \\
+html.overlay_active,
+html.overlay_active body {
+	overflow-y: hidden;
+}
+
+
+// ==|== sections =============================================================
+// ============================================================================
+
+// Header
+// ----------------------------------------------------------------------------
+header {
+	display: table;
+	table-layout: fixed;
+	padding: 0 1.6rem;
+	width: 100%;
+	height: 100vh;
+	background-color: $hsla_L5;
+	background-image: url('../img/church.jpg');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+}
+header div.wrap_viewport {
+	display: table-cell;
+	vertical-align: middle;
+}
+header div.wrap_viewport img {
+	position: absolute;
+	top: 4rem;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	width: 6.9rem;
+	height: 5.8rem;
+}
+header div.wrap_viewport div.wrap_svg {
+	margin: 8rem auto 0 auto;
+	max-width: 41.4rem;
+	fill: $hsla_L100;
+}
+
+// Articles
+// ----------------------------------------------------------------------------
+section {
+	padding: 6rem 1.6rem 4.8rem 1.6rem;
+	border-bottom: 0.1rem solid $hsla_L78;
+}
+section article > div {
+	margin-bottom: 4rem;
+}
+section article > div svg {
+	margin: 0 auto;
+	fill: $hsla_brown;
+}
+section article p {
+	margin-bottom: 2rem;
+	font-size: 1.4rem; // 1.8rem;
+	line-height: 1.6;
+}
+section article p:last-child {
+	margin-bottom: 0;
+}
+// --- SVG Titles --- \\
+section article div.wrap_title-1 svg.mod_title-1a {
+	margin-bottom: 0.6rem;
+	width: 25.2rem;
+	height: 2.6rem;
+}
+section article div.wrap_title-1 svg.mod_title-1b {
+	width: 25.6rem;
+	height: 2.6rem;
+}
+section article div.wrap_title-2 svg.mod_title-2 {
+	width: 22.6rem;
+	height: 2.6rem;
+}
+
+
+
+
+// Form
+// ----------------------------------------------------------------------------
+form {
+	margin-top: 6rem;
+}
+form div.wrap_inputs,
+form div.wrap_inputs input.mce-name,
+form div.wrap_inputs input.mce-email,
+form input.mce-because {
+	margin-bottom: 2rem;
+}
+
+form input.mce-because {
+	height: 14.4rem;
+}
+
+form div.wrap_boxes p,
+form div.wrap_boxes label {
+	font-size: 1.4rem;
+	font-style: italic;
+	line-height: 1.2;
+	color: $hsla_L42;
+}
+
+
+
+
+
+// Footer
+// ----------------------------------------------------------------------------
+footer {
+	padding: 6rem 1.6rem;
+}
+footer p {
+	margin-bottom: 6rem;
+	font-size: 1.8rem;
+	line-height: 1.4;
+}
+footer a {
+	display: block;
+	margin: 0 auto;
+}
+footer a:hover {
+	opacity: 0.8;
+}
+footer a:active {
+	opacity: 1;
+}
+footer > a {
+	margin-bottom: 6rem;
+	width: 12.8rem;
+}
+// --- Partners --- \\
+div.partners div h6 {
+	margin-bottom: 2rem;
+	font-size: 1.4rem;
+	line-height: 1.2;
+	color: $hsla_L42;
+}
+div.partners div.col-1 {
+	margin-bottom: 6rem;
+}
+div.partners div.col-1 a {
+	width: 10.7rem;
+}
+div.partners div.col-2 a {
+	width: 9.1rem;
+}

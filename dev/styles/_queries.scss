@@ -1,0 +1,53 @@
+// ==|== media queries ========================================================
+// WIDTHS: 480px / 568px / 768px / 960px
+// ============================================================================
+
+@media only screen and (min-height: 30em) { // 480px / 16px = 30em
+
+// ==|== sections =============================================================
+// ============================================================================
+
+	// Header
+	// ----------------------------------------------------------------------------
+	header div.wrap_viewport img {
+		top: 8rem;
+	}
+	header div.wrap_viewport div.wrap_svg {
+		margin-top: 3.2rem;
+	}
+
+}
+
+@media only screen and (min-width: 30em) { // 480px / 16px = 30em
+
+
+}
+
+@media only screen and (min-width: 48em) { // 768px / 16px = 48em
+
+// ==|== sections =============================================================
+// ============================================================================
+
+	// Header
+	// ----------------------------------------------------------------------------
+	header div.wrap_viewport img {
+		top: 12rem;
+	}
+	header div.wrap_viewport div.wrap_svg {
+		margin-top: 12rem;
+	}
+
+}
+
+@media only screen and (min-width: 60em) { // 960px / 16px = 60em
+
+}
+
+@media only screen and (min-width: 75em) { // 1200px / 16px = 75em
+
+}
+
+/*
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) { // IE10 & IE11
+}
+*/

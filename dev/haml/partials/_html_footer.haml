@@ -1,0 +1,22 @@
+%footer
+
+	:plain
+		<p>Thank you for your<br> interest and engagement!</p>
+
+	%a{:href => "http://modbox.ca/", :title => "Visit Modbox", :target => "_blank"}
+		%img{:src => "assets/img/modbox.jpg", :alt => "Modbox Developments"}
+
+	.partners
+
+		.col-1
+			%h6 Architect
+			%a{:href => "http://www.linebox.ca/", :title => "Visit Linebox Studio", :target => "_blank"}
+				%img{:src => "assets/img/linebox.jpg", :alt => "Linebox Studio"}
+
+		.col-2
+			:plain
+				<h6>Project Managers &amp;<br> General Contactors</h6>
+			%a{:href => "http://www.tlpi.ca/", :title => "Visit Lake Partnership", :target => "_blank"}
+				%img{:src => "assets/img/lake.jpg", :alt => "The Lake Partnership Inc."}
+
+-# = Haml::Engine.new(File.read("dev/haml/partials/_doc_scripts.haml")).render
