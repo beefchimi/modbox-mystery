@@ -1,16 +1,19 @@
 // SASS Variables
 // ----------------------------------------------------------------------------
 
-$hsla_blue:  hsla(182,67%,73%,1);
+$hsla_blue:   hsla(182,67%,73%,1);
+$hsla_blue-D: hsla(182,67%,52%,1);
 
-$hsla_brown: hsla(34,11%,25%,1);
+$hsla_brown:  hsla(34,11%,25%,1);
 
-$hsla_L0:    hsla(0,0%,0%,1);
-$hsla_L5:    hsla(0,0%,5%,1);
-$hsla_L42:   hsla(0,0%,42%,1);
-$hsla_L78:   hsla(0,0%,78%,1);
-$hsla_L86:   hsla(0,0%,86%,1);
-$hsla_L100:  hsla(0,0%,100%,1);
+$hsla_L0:     hsla(0,0%,0%,1);
+$hsla_L5:     hsla(0,0%,5%,1);
+$hsla_L22:    hsla(0,0%,22%,1);
+$hsla_L42:    hsla(0,0%,42%,1);
+$hsla_L66:    hsla(0,0%,66%,1);
+$hsla_L78:    hsla(0,0%,78%,1);
+$hsla_L86:    hsla(0,0%,86%,1);
+$hsla_L100:   hsla(0,0%,100%,1);
 
 $boxshadow_drop: 0 0.1rem 0.2rem hsla(0,0%,0%,0.3);
 

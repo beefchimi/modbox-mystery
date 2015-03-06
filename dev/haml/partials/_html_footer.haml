@@ -1,22 +1,24 @@
 %footer
 
-	:plain
-		<p>Thank you for your<br> interest and engagement!</p>
+	%div{"data-container" => "width_490"}
 
-	%a{:href => "http://modbox.ca/", :title => "Visit Modbox", :target => "_blank"}
-		%img{:src => "assets/img/modbox.jpg", :alt => "Modbox Developments"}
+		:plain
+			<p>Thank you for your<br> interest and engagement!</p>
 
-	.partners
+		%a{:href => "http://modbox.ca/", :title => "Visit Modbox", :target => "_blank"}
+			%img{:src => "assets/img/modbox.jpg", :alt => "Modbox Developments"}
 
-		.col-1
-			%h6 Architect
-			%a{:href => "http://www.linebox.ca/", :title => "Visit Linebox Studio", :target => "_blank"}
-				%img{:src => "assets/img/linebox.jpg", :alt => "Linebox Studio"}
+		.partners.clearfix
 
-		.col-2
-			:plain
-				<h6>Project Managers &amp;<br> General Contactors</h6>
-			%a{:href => "http://www.tlpi.ca/", :title => "Visit Lake Partnership", :target => "_blank"}
-				%img{:src => "assets/img/lake.jpg", :alt => "The Lake Partnership Inc."}
+			.col-1
+				%h6 Architect
+				%a{:href => "http://www.linebox.ca/", :title => "Visit Linebox Studio", :target => "_blank"}
+					%img{:src => "assets/img/linebox.jpg", :alt => "Linebox Studio"}
+
+			.col-2
+				:plain
+					<h6>Project Managers &amp;<br> General Contactors</h6>
+				%a{:href => "http://www.tlpi.ca/", :title => "Visit Lake Partnership", :target => "_blank"}
+					%img{:src => "assets/img/lake.jpg", :alt => "The Lake Partnership Inc."}
 
 -# = Haml::Engine.new(File.read("dev/haml/partials/_doc_scripts.haml")).render
