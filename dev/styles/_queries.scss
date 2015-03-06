@@ -145,6 +145,11 @@
 		float: left;
 		text-align: left;
 	}
+/*
+	form div.character_counter {
+		text-align: left;
+	}
+*/
 
 }
 
@@ -157,6 +162,7 @@
 	// ----------------------------------------------------------------------------
 	form div.wrap_boxes {
 		float: left;
+		margin-bottom: 0;
 	}
 	form button {
 		float: right;

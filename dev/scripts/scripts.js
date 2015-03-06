@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', function() {
 	// Global Variables: Variables requiring a global scope
 	// ----------------------------------------------------------------------------
 	var transitionEvent = whichTransitionEvent(),
-		animationEvent  = whichAnimationEvent(),
 		elHTML          = document.documentElement,
 		elBody          = document.body,
 		elOverlay;
@@ -26,25 +25,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		for (trans in transitions) {
 			if (element.style[trans] !== undefined) {
 				return transitions[trans];
-			}
-		}
-
-	}
-
-	function whichAnimationEvent() {
-
-		var anim,
-			element    = document.createElement('fakeelement'),
-			animations = {
-				'animation'       : 'animationend',
-				'OAnimation'      : 'oAnimationEnd',
-				'MozAnimation'    : 'animationend',
-				'WebkitAnimation' : 'webkitAnimationEnd'
-			}
-
-		for (anim in animations) {
-			if (element.style[anim] !== undefined) {
-				return animations[anim];
 			}
 		}
 
@@ -160,47 +140,199 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 
 
-	// pageLoaded: Execute once the page has loaded and the FOUT animation has ended
+	// Mailchimp Form Functions
 	// ----------------------------------------------------------------------------
-	function pageLoaded() {
+	function formMailchimp() {
 
-		var elHeader = document.getElementsByTagName('header')[0];
+		var emailfilter     = /^\w+[\+\.\w-]*@([\w-]+\.)*\w+[\w-]*\.([a-z]{2,4}|\d+)$/i,
+			elForm         = document.getElementById('mc-embedded-subscribe-form'),
+			elInputName    = document.getElementById('mce-NAME'),
+			elInputEmail   = document.getElementById('mce-EMAIL'),
+			elInputSuggest = document.getElementById('mce-SUGGEST'),
+			strFormAction  = elForm.getAttribute('action');
 
-		elHeader.addEventListener(animationEvent, removeFOUT);
+		elForm.addEventListener('submit', function(e) {
 
-		function removeFOUT() {
+			var numName    = elInputName.value.length,
+				numEmail   = elInputEmail.value.length,
+				numSuggest = elInputSuggest.value.length;
 
-			classie.add(elHTML, 'ready');
-			elHeader.removeEventListener(animationEvent, removeFOUT);
+			if (numName > 0 && numEmail > 0 && numSuggest > 0) {
+
+				var request = new XMLHttpRequest();
+
+				request.open('GET', strFormAction, true);
+				request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+
+				request.onload = function() {
+
+					if (request.status >= 200 && request.status < 400) {
+
+						// Success!
+						var resp = JSON.parse(request.responseText);
+
+						request.send(resp);
+
+					} else {
+
+						console.log('We reached our target server, but it returned an error');
+
+					}
+
+				};
+
+				request.onerror = function() {
+					console.log('There was a connection error of some sort');
+				};
+
+			} else {
+
+				console.log('submission prevented');
+
+				// error some stuff
+				e.preventDefault();
+
+			}
+
+		});
+
+	}
+
+
+	// passSuggestion: Pass value from textarea to input
+	// ----------------------------------------------------------------------------
+	function passSuggestion() {
+
+		var elInputHidden = document.getElementById('mce-BECAUSE'),
+			elTextarea    = document.getElementById('mce-TEXT'),
+			elCharCount   = document.getElementById('count_remains'),
+			valTextarea,
+			numCharCount;
+
+		function updateBecause() {
+
+			valTextarea  = elTextarea.value;
+			numCharCount = 255 - valTextarea.length;
+
+			elInputHidden.value = valTextarea;
+			elCharCount.innerHTML = numCharCount;
+
+		}
+
+		elTextarea.addEventListener('input', updateBecause);
+
+		updateBecause();
+
+	}
+
+
+
+
+
+
+/*
+
+
+	// Mailchimp AJAX Submission
+	// ----------------------------------------------------------------------------
+	function mailchimpAJAX() {
+
+		var emailfilter      = /^\w+[\+\.\w-]*@([\w-]+\.)*\w+[\w-]*\.([a-z]{2,4}|\d+)$/i,
+			$signupArticle  = $('#mc_embed_signup'),
+			$mailchimpForm  = $('#mc-embedded-subscribe-form'),
+			$mailchimpInput = $('#mce-EMAIL'),
+			$responseText   = $('#mce-response-text');
+
+		if ($mailchimpForm.length > 0) {
+
+			$('#mc-embedded-subscribe-form').submit(function(e) {
+
+				var $this   = $(this),
+					isValid = true;
+
+				// we may have added an error class... so let's go ahead and remove it
+				$('.error').removeClass('error');
+
+				// email ID validation
+				if ( emailfilter.test( $mailchimpInput.val() ) == false ) {
+					$mailchimpInput.addClass('error');
+					isValid = false;
+				}
+
+				// if email is valid, submit form through ajax
+				if (isValid) {
+
+					$.ajax({
+
+						type: 'GET',
+						url:  $this.attr('action'),
+						data: $this.serialize(),
+						dataType: 'json',
+						contentType: 'application/json; charset=utf-8',
+						error: function(jqXHR, textStatus, errorThrown) {
+							alert('Could not connect to the registration server. Please reload the page and try again.');
+						},
+
+						success: function(data) {
+
+							// it worked, so hide form and display thank-you message.
+							$responseText.html(data.msg);
+							$signupArticle.addClass('success');
+							$this[0].reset();
+
+						}
+
+					});
+
+				}
+
+				return false;
+
+			});
 
 		}
 
 	}
 
 
-	// secretEmail: Add mailto link to footer
+	// Check if email input has a value
 	// ----------------------------------------------------------------------------
-	function secretEmail() {
+	function inputCheckValue() {
 
-		var elLinkHeader = document.getElementById('email_header'),
-			elLinkFooter = document.getElementById('email_footer'),
-			prefix        = 'mailto',
-			local        = 'hello',
-			domain       = 'northandnavy',
-			suffix        = 'com';
+		var formEmail  = document.getElementById('mc_embed_signup'),
+			inputEmail = document.getElementById('mce-EMAIL');
 
-		elLinkHeader.setAttribute('href', prefix + ':' + local + '@' + domain + '.' + suffix);
-		elLinkFooter.setAttribute('href', prefix + ':' + local + '@' + domain + '.' + suffix);
-		elLinkFooter.innerHTML = local + '@' + domain + '.' + suffix;
+		inputEmail.addEventListener('change', function() { // 'input'
+
+			console.log('input has been changed');
+
+			if (inputEmail.value) {
+				formEmail.className = 'has-value';
+			} else {
+				formEmail.className = '';
+			}
+
+		});
 
 	}
+*/
+
+
+
+
+
+
+
+
+
+
+
 
 
 	// Initialize Primary Functions
 	// ----------------------------------------------------------------------------
-	// pageLoaded();
-	// viewportHeader();
-	// secretEmail();
+	formMailchimp();
+	// passSuggestion();
 
 
 });

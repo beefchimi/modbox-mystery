@@ -47,6 +47,12 @@
 
 					%aside#mc_embed_signup{"data-container" => "width_720"}
 
+
+
+
+
+						-# //modbox.us10.list-manage.com/subscribe/post?u=9d04fb276b7023a982943ca3e&amp;id=ac14f0966e
+						-# //modbox.us10.list-manage.com/subscribe/post-json?u=9d04fb276b7023a982943ca3e&amp;id=ac14f0966e&c=?
 						%form#mc-embedded-subscribe-form.validate{:action => "//modbox.us10.list-manage.com/subscribe/post-json?u=9d04fb276b7023a982943ca3e&amp;id=ac14f0966e&c=?", :method => "get", :name => "mc-embedded-subscribe-form", :novalidate => true}
 
 							.wrap_inputs.clearfix
@@ -57,9 +63,13 @@
 
 								%input#mce-SUGGEST.mce-suggest{:type => "text", :name => "SUGGEST", :value => "", :placeholder => "The name should be...", :required => true, :tabindex => "3"}
 
-							-# %input#mce-BECAUSE.mce-because{:type => "text", :name => "BECAUSE", :value => "", :placeholder => "Because...", :required => true}
+							%input#mce-BECAUSE.visuallyhidden{:type => "text", :name => "BECAUSE", :value => ""}
 
-							%textarea#mce-TEXT.mce-text{:name => "TEXT", :value => "", :maxlength => "255", :placeholder => "Because...", :required => true, :tabindex => "4"}
+							%textarea#mce-TEXT.mce-text{:name => "TEXT", :value => "", :maxlength => "255", :placeholder => "Because...", :tabindex => "4"}
+
+							.character_counter
+								%span#count_remains 255
+								%span characters remain
 
 							.wrap_footer.clearfix
 
@@ -91,5 +101,10 @@
 
 							.wrap_response
 								%h4#mce-response-text
+
+
+
+
+
 
 		= Haml::Engine.new(File.read("dev/haml/partials/_html_footer.haml")).render
