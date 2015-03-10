@@ -24,11 +24,11 @@
 						%svg.mod_title-1b{:viewBox => "0 0 252 26"}
 							%use{"xlink:href" => "#mod_title-1b"}
 
-					%p In late 2014, ModBox purchased the former St.Charles Church with the intention of reviving the historic property and edifice. A well-known and beloved anchor within its community, our vision for this development is to protect and preserve the church building, while celebrating the potential of what it is and what it can become.
+					%p In summer 2016, ModBox plans to begin construction on a new development surrounding the former St. Charles Church in Vanier. A well-known and beloved anchor within its community, our vision for this development is to honour its heritage and explore its potential.
 
-					%p As we continue to progress with all of the the necessary approvals for the project, our goal is to provide a mixed-use project that will act as a central hub for the community. Composed of both residential and commercial elements, the former St. Charles Church will include condominiums, townhouses, workplaces, restaurants and a seasonal marketplace to its centrally-located site.
+					%p Our goal is to provide a mixed-use project that will act as a central hub for the community. Composed of both residential and commercial elements, the former St. Charles Church and its surrounding property will include residences, workplaces, restaurants and a seasonal marketplace to its centrally-located site. We are still in the early planning stages of this project and the necessary approvals are still needed.
 
-					%p This new site will be a destination not only for local area residents but also for people from other communities in Ottawa and visitors to the city from around the world.
+					%p This new site will be a destination not only for local area residents, but also for people from other communities in Ottawa and visitors to the city from around the world.
 
 			%section
 
@@ -40,36 +40,30 @@
 						%svg.mod_title-2{:viewBox => "0 0 226 26"}
 							%use{"xlink:href" => "#mod_title-2"}
 
-					%p You tell us! The former St. Charles Church will remain at the heart of its community through its revival and we want you to be a part of its evolution by helping us choose a new name. Tell us what you think the new name should be and why using the form below.
+					%p You tell us! The former St. Charles Church will remain at the heart of our community through its revival and we want you to be a part of its evolution by helping us choose a new name. Tell us what you think the new name should be and why using the form below. If you'd just like to hear more about the project as it evolves, just enter your email address.
 
 					:plain
-						<p>Submissions will be accepted from <strong>March 7</strong> to <strong>March 17, 2015</strong>. We will announce the shortlist of the names in the weeks following and the final selection will be revealed this summer.</p>
+						<p>Submissions will be accepted from <strong>March 10</strong> to <strong>March 21, 2015</strong>. We will announce the shortlist of the names in the weeks following and the final selection will be revealed this summer.</p>
 
 					%aside#mc_embed_signup{"data-container" => "width_720"}
 
-
-
-
-
-						-# //modbox.us10.list-manage.com/subscribe/post?u=9d04fb276b7023a982943ca3e&amp;id=ac14f0966e
-						-# //modbox.us10.list-manage.com/subscribe/post-json?u=9d04fb276b7023a982943ca3e&amp;id=ac14f0966e&c=?
 						%form#mc-embedded-subscribe-form.validate{:action => "//modbox.us10.list-manage.com/subscribe/post-json?u=9d04fb276b7023a982943ca3e&amp;id=ac14f0966e&c=?", :method => "get", :name => "mc-embedded-subscribe-form", :novalidate => true}
 
 							.wrap_inputs.clearfix
 
-								%input#mce-NAME.mce-name{:type => "text", :name => "NAME", :value => "", :placeholder => "Your name", :required => true, :tabindex => "1"}
+								%input#mce-NAME.mce-name{:type => "text", :name => "NAME", :value => "", :placeholder => "Your name", :tabindex => "1"}
 
 								%input#mce-EMAIL.mce-email{:type => "email", :name => "EMAIL", :value => "", :placeholder => "Your email address", :required => true, :tabindex => "2"}
 
-								%input#mce-SUGGEST.mce-suggest{:type => "text", :name => "SUGGEST", :value => "", :placeholder => "The name should be...", :required => true, :tabindex => "3"}
+								%input#mce-SUGGEST.mce-suggest{:type => "text", :name => "SUGGEST", :value => "", :placeholder => "The name should be...", :tabindex => "3"}
 
 							%input#mce-BECAUSE.visuallyhidden{:type => "text", :name => "BECAUSE", :value => ""}
 
 							%textarea#mce-TEXT.mce-text{:name => "TEXT", :value => "", :maxlength => "255", :placeholder => "Because...", :tabindex => "4"}
 
 							.character_counter
-								%span#count_remains 255
-								%span characters remain
+								%span#count_remains 0
+								%span / 255
 
 							.wrap_footer.clearfix
 
@@ -94,17 +88,14 @@
 								#do-not-remove.visuallyhidden
 									%input{:type => "text", :name => "b_9d04fb276b7023a982943ca3e_ac14f0966e", :value => "", :tabindex => "-1"}
 
-								-# %input#mc-embedded-subscribe.button{:type => "submit", :value => "Send Your Idea", :name => "subscribe"}
 								%button#mc-embedded-subscribe.button{:type => "submit", :value => "Send Your Idea", :name => "subscribe", :tabindex => "7"}
 									%svg.mod_send{:viewBox => "0 0 164 16"}
 										%use{"xlink:href" => "#mod_send"}
 
-							.wrap_response
-								%h4#mce-response-text
-
-
-
-
-
+							%aside#overlay{"data-overlay" => "inactive"}
+								#overlay_modal.overlay_modal
+									.wrap_response
+										%h4#mce-response-text
+										%a#close{:href => "#", :title => "Close Window"} Close
 
 		= Haml::Engine.new(File.read("dev/haml/partials/_html_footer.haml")).render

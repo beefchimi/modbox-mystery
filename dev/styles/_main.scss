@@ -24,14 +24,14 @@ body {
 	background-color: $hsla_blue;
 }
 ::-webkit-input-placeholder {
-	color: $hsla_L5;
+	color: $hsla_L42;
 }
 ::-moz-placeholder {
-	color: $hsla_L5;
+	color: $hsla_L42;
 	opacity: 1;
 }
 :-ms-input-placeholder {
-	color: $hsla_L5;
+	color: $hsla_L42;
 }
 
 // Transitions
@@ -46,12 +46,6 @@ div[class^="wrap_checkbox"] label::before {
 }
 svg {
 	transition: fill 0.3s ease-in-out;
-}
-[data-overlay] {
-	transition: opacity 0.6s ease-in-out;
-}
-div.loader_overlay {
-	transition: opacity 0.4s ease-in-out;
 }
 // --- Animations --- \\
 @keyframes animShow {
@@ -76,37 +70,6 @@ html:not(.ie9) footer {
 	animation: animShow 0.6s ease-in-out 0.2s forwards;
 }
 
-// CSS Loader
-// ----------------------------------------------------------------------------
-div.loader_overlay {
-	position: fixed;
-	z-index: 910;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	opacity: 0;
-	// visibility: hidden; // webkit will stop the animation if visibility is changed
-}
-div.loader_overlay.visible {
-	opacity: 1;
-}
-div.loader_overlay div.wrap_svg {
-	position: absolute;
-	z-index: 911;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	margin: auto;
-	width: 4.4rem;
-	height: 4.4rem;
-	animation: anim360 1s linear infinite forwards;
-}
-div.loader_overlay div.wrap_svg svg {
-	fill: $hsla_blue;
-}
-
 // Forms
 // ----------------------------------------------------------------------------
 textarea,
@@ -115,10 +78,15 @@ input[type="email"] {
 	padding-left: 1.6rem;
 	padding-right: 1.6rem;
 	width: 100%;
-	font-size: 1.4rem;
+	font-size: 1.6rem;
 	color: $hsla_L5;
 	border-radius: 0.8rem;
-	box-shadow: inset 0 0 0 0.2rem $hsla_L86;
+	border: 0.2rem solid $hsla_L86;
+	// box-shadow: inset 0 0 0 0.2rem $hsla_L86;
+	-webkit-appearance: none; // prevent iOS inset shadow
+	   -moz-appearance: none; // prevent iOS inset shadow
+			appearance: none; // prevent iOS inset shadow
+	box-shadow: none; // prevent iOS inset shadow
 }
 textarea {
 	padding-top: 1.6rem;
@@ -131,7 +99,8 @@ input[type="email"] {
 }
 input[type="text"]:focus,
 input[type="email"]:focus {
-	box-shadow: inset 0 0 0 0.2rem $hsla_L66;
+	border-color: $hsla_L66;
+	// box-shadow: inset 0 0 0 0.2rem $hsla_L66;
 }
 // --- Checkbox --- \\
 div[class^="wrap_checkbox"] {
@@ -184,7 +153,7 @@ div[class^="wrap_checkbox"]:active label {
 }
 input[type="checkbox"]:checked + label::before {
 	background-color: $hsla_blue;
-	border-color: $hsla_blue;
+	border-color: $hsla_blue !important;
 }
 
 // General Styles
@@ -258,15 +227,31 @@ button.button:focus svg {
 	position: fixed;
 	z-index: 900;
 	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
+	width: 100%;
+	height: 100%;
 	background-color: hsla(0,0%,0%,0.8);
 }
-// + overlay active + \\
-html.overlay_active,
-html.overlay_active body {
-	overflow-y: hidden;
+[data-overlay="active"] {
+	left: 0;
+	animation: animShow 0.4s ease-in-out;
+}
+[data-overlay="inactive"] {
+	left: -200%;
+	animation: animHide 0.4s ease-in-out forwards;
+}
+.overlay_modal {
+	position: absolute;
+	z-index: 901;
+	top: 0;
+	right: 1.6rem;
+	bottom: 0;
+	left: 1.6rem;
+	margin: auto;
+	max-width: 32rem;
+	padding: 0 2rem;
+	height: 28rem;
+	background-color: $hsla_L100;
+	border-radius: 1rem;
 }
 
 
@@ -298,7 +283,7 @@ header div.wrap_viewport img {
 	right: 0;
 	margin: 0 auto;
 	width: 6.9rem;
-	height: 5.8rem;
+	height: 7.1rem;
 }
 header div.wrap_viewport div.wrap_svg {
 	margin: 8rem auto 0 auto;
@@ -308,6 +293,10 @@ header div.wrap_viewport div.wrap_svg {
 
 // Articles
 // ----------------------------------------------------------------------------
+main {
+	position: relative;
+	z-index: 2;
+}
 section {
 	padding: 6rem 1.6rem 4.8rem 1.6rem;
 	border-bottom: 0.1rem solid $hsla_L78;
@@ -349,11 +338,18 @@ form {
 }
 form textarea,
 form div.wrap_inputs input.mce-suggest {
-	box-shadow: inset 0 0 0 0.2rem $hsla_blue;
+	border-color: $hsla_blue;
+	// box-shadow: inset 0 0 0 0.2rem $hsla_blue;
 }
 form textarea:focus,
 form div.wrap_inputs input.mce-suggest:focus {
-	box-shadow: inset 0 0 0 0.2rem $hsla_blue-D;
+	border-color: $hsla_blue-D;
+	// box-shadow: inset 0 0 0 0.2rem $hsla_blue-D;
+}
+form div.wrap_inputs input.mce-email.error,
+form div.wrap_inputs input.mce-suggest.error {
+	border-color: $hsla_red;
+	// box-shadow: inset 0 0 0 0.2rem $hsla_red;
 }
 form textarea,
 form div.wrap_inputs,
@@ -388,10 +384,41 @@ form div.wrap_boxes div.wrap_checkbox-1 label span {
 form div.character_counter span {
 	font-size: 1.2rem;
 }
+// + mailchimp response + \\
+.wrap_response {
+	position: relative;
+	z-index: 902;
+	top: 50%;
+	transform: translateY(-50%);
+}
+.wrap_response h4 {
+	margin-bottom: 3.2rem;
+	font-size: 1.8rem;
+	line-height: 1.4;
+}
+.wrap_response a {
+	display: inline-block;
+	padding: 1rem 3.2rem;
+	font-size: 1.4rem;
+	font-weight: 700;
+	letter-spacing: 0.1rem;
+	text-transform: uppercase;
+	color: $hsla_L100;
+	background-color: $hsla_blue;
+	border-radius: 0.6rem;
+}
+.wrap_response a:hover {
+	background-color: $hsla_L42;
+}
+.wrap_response a:active {
+	background-color: $hsla_L22;
+}
 
 // Footer
 // ----------------------------------------------------------------------------
 footer {
+	position: relative;
+	z-index: 1;
 	padding: 6rem 1.6rem;
 }
 footer [data-container] p {
