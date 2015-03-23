@@ -4,9 +4,70 @@ jQuery(document).ready(function($) {
 
 	// Global Variables: Variables requiring a global scope
 	// ----------------------------------------------------------------------------
-	var elHTML          = document.documentElement,
+	var transitionEvent = whichTransitionEvent(),
+		animationEvent  = whichAnimationEvent(),
+		elHTML          = document.documentElement,
 		elBody          = document.body,
 		elOverlay;
+
+
+	// Helper: Check when a CSS transition or animation has ended
+	// ----------------------------------------------------------------------------
+	function whichTransitionEvent() {
+
+		var trans,
+			element     = document.createElement('fakeelement'),
+			transitions = {
+				'transition'       : 'transitionend',
+				'OTransition'      : 'oTransitionEnd',
+				'MozTransition'    : 'transitionend',
+				'WebkitTransition' : 'webkitTransitionEnd'
+			}
+
+		for (trans in transitions) {
+			if (element.style[trans] !== undefined) {
+				return transitions[trans];
+			}
+		}
+
+	}
+
+	function whichAnimationEvent() {
+
+		var anim,
+			element    = document.createElement('fakeelement'),
+			animations = {
+				'animation'       : 'animationend',
+				'OAnimation'      : 'oAnimationEnd',
+				'MozAnimation'    : 'animationend',
+				'WebkitAnimation' : 'webkitAnimationEnd'
+			}
+
+		for (anim in animations) {
+			if (element.style[anim] !== undefined) {
+				return animations[anim];
+			}
+		}
+
+	}
+
+
+	// pageLoaded: Execute once the page has loaded and the FOUT animation has ended
+	// ----------------------------------------------------------------------------
+	function pageLoaded() {
+
+		var elHeader = document.getElementsByTagName('header')[0];
+
+		elHeader.addEventListener(animationEvent, removeFOUT);
+
+		function removeFOUT() {
+
+			classie.add(elHTML, 'ready');
+			elHeader.removeEventListener(animationEvent, removeFOUT);
+
+		}
+
+	}
 
 
 	// Mailchimp Form Functions
@@ -121,8 +182,9 @@ jQuery(document).ready(function($) {
 
 	// Initialize Primary Functions
 	// ----------------------------------------------------------------------------
+	pageLoaded();
 	formMailchimp();
-	passSuggestion();
+	// passSuggestion();
 
 
 });

@@ -123,7 +123,7 @@
 	}
 	form div.wrap_inputs input {
 		float: left;
-		width: calc(33.3333333% - 1.4rem);
+		// width: calc(33.3333333% - 1.4rem);
 	}
 	form div.wrap_inputs input.mce-name,
 	form div.wrap_inputs input.mce-email,
@@ -142,6 +142,20 @@
 	form div.wrap_boxes p,
 	form div.wrap_boxes div[class^="wrap_checkbox"] {
 		float: left;
+		text-align: left;
+	}
+	// + ADDED POST IDEA SUBMISSION + \\
+	form div.wrap_inputs {
+		max-width: none; // 42rem;
+	}
+	form div.wrap_inputs input {
+		width: calc(50% - 1rem);
+	}
+	form div.wrap_inputs input.mce-email {
+		margin-right: 0;
+	}
+	form div.wrap_inputs input.mce-name,
+	form div.wrap_inputs input.mce-email {
 		text-align: left;
 	}
 

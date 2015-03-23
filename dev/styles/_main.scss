@@ -230,6 +230,10 @@ button.button:focus svg {
 	width: 100%;
 	height: 100%;
 	background-color: hsla(0,0%,0%,0.8);
+	visibility: hidden; // requires visibility in order to hide animation on initial page load... set to 'visible' via JS class 'ready'
+}
+html.ready [data-overlay] {
+	visibility: visible;
 }
 [data-overlay="active"] {
 	left: 0;
@@ -252,6 +256,13 @@ button.button:focus svg {
 	height: 28rem;
 	background-color: $hsla_L100;
 	border-radius: 1rem;
+}
+// + internet explorer + \\
+html.ie9 [data-overlay="active"] {
+	display: block;
+}
+html.ie9 [data-overlay="inactive"] {
+	display: none;
 }
 
 
@@ -412,6 +423,16 @@ form div.character_counter span {
 }
 .wrap_response a:active {
 	background-color: $hsla_L22;
+}
+// + ADDED POST IDEA SUBMISSION + \\
+form div.wrap_inputs {
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 42rem;
+}
+form div.wrap_inputs input.mce-name,
+form div.wrap_inputs input.mce-email {
+	text-align: center;
 }
 
 // Footer
