@@ -10,7 +10,7 @@ optgroup,
 select,
 textarea {
 	font-family: 'adelle', Georgia,Times, 'Times New Roman', serif;
-	color: $hsla_brown;
+	color: $hsl_brown;
 }
 html {
 	min-height: 100%;
@@ -20,18 +20,18 @@ body {
 	text-align: center;
 }
 ::selection {
-	color: $hsla_L100;
-	background-color: $hsla_blue;
+	color: $hsl_L100;
+	background-color: $hsl_blue;
 }
 ::-webkit-input-placeholder {
-	color: $hsla_L42;
+	color: $hsl_L42;
 }
 ::-moz-placeholder {
-	color: $hsla_L42;
+	color: $hsl_L42;
 	opacity: 1;
 }
 :-ms-input-placeholder {
-	color: $hsla_L42;
+	color: $hsl_L42;
 }
 
 // Transitions
@@ -79,10 +79,10 @@ input[type="email"] {
 	padding-right: 1.6rem;
 	width: 100%;
 	font-size: 1.6rem;
-	color: $hsla_L5;
+	color: $hsl_L5;
 	border-radius: 0.8rem;
-	border: 0.2rem solid $hsla_L86;
-	// box-shadow: inset 0 0 0 0.2rem $hsla_L86;
+	border: 0.2rem solid $hsl_L86;
+	// box-shadow: inset 0 0 0 0.2rem $hsl_L86;
 	-webkit-appearance: none; // prevent iOS inset shadow
 	   -moz-appearance: none; // prevent iOS inset shadow
 			appearance: none; // prevent iOS inset shadow
@@ -99,8 +99,8 @@ input[type="email"] {
 }
 input[type="text"]:focus,
 input[type="email"]:focus {
-	border-color: $hsla_L66;
-	// box-shadow: inset 0 0 0 0.2rem $hsla_L66;
+	border-color: $hsl_L66;
+	// box-shadow: inset 0 0 0 0.2rem $hsl_L66;
 }
 // --- Checkbox --- \\
 div[class^="wrap_checkbox"] {
@@ -113,7 +113,7 @@ div[class^="wrap_checkbox"] label {
 	position: relative;
 	padding-left: 3.6rem;
 	text-align: left;
-	color: $hsla_L42;
+	color: $hsl_L42;
 }
 div[class^="wrap_checkbox"] label::before {
 	content: " ";
@@ -123,8 +123,8 @@ div[class^="wrap_checkbox"] label::before {
 	left: 0;
 	width: 2.2rem;
 	height: 2.2rem;
-	background-color: $hsla_L100;
-	border: 0.2rem solid $hsla_L86;
+	background-color: $hsl_L100;
+	border: 0.2rem solid $hsl_L86;
 	border-radius: 0.5rem;
 }
 div[class^="wrap_checkbox"] label span {
@@ -137,23 +137,23 @@ div[class^="wrap_checkbox"] label svg {
 	left: 0.4rem;
 	width: 1.4rem;
 	height: 1.4rem;
-	fill: $hsla_L100;
+	fill: $hsl_L100;
 }
 // + interaction + \\
 div[class^="wrap_checkbox"]:hover label,
 div[class^="wrap_checkbox"] input[type="checkbox"]:focus + label {
-	color: $hsla_L22;
+	color: $hsl_L22;
 }
 div[class^="wrap_checkbox"]:hover label::before,
 div[class^="wrap_checkbox"] input[type="checkbox"]:focus + label::before {
-	border-color: $hsla_L66;
+	border-color: $hsl_L66;
 }
 div[class^="wrap_checkbox"]:active label {
 	opacity: 0.7;
 }
 input[type="checkbox"]:checked + label::before {
-	background-color: $hsla_blue;
-	border-color: $hsla_blue !important;
+	background-color: $hsl_blue;
+	border-color: $hsl_blue !important;
 }
 
 // General Styles
@@ -197,8 +197,8 @@ svg.svg_inline {
 	width: 22rem;
 	height: 5.8rem;
 	text-align: center;
-	color: $hsla_L100;
-	border: 0.2rem solid $hsla_L5;
+	color: $hsl_L100;
+	border: 0.2rem solid $hsl_L5;
 	border-radius: 1rem;
 }
 .button svg {
@@ -208,17 +208,17 @@ svg.svg_inline {
 }
 .button:hover,
 button.button:focus {
-	border-color: $hsla_blue;
+	border-color: $hsl_blue;
 }
 .button:hover svg,
 button.button:focus svg {
-	fill: $hsla_blue;
+	fill: $hsl_blue;
 }
 .button:active {
-	border-color: $hsla_blue-D;
+	border-color: darken($hsl_blue, 21%);
 }
 .button:active svg {
-	fill: $hsla_blue-D;
+	fill: darken($hsl_blue, 21%);
 }
 // --- Overlay & Modal --- \\
 // created and added (also destroyed) to DOM via JS
@@ -254,7 +254,7 @@ html.ready [data-overlay] {
 	max-width: 32rem;
 	padding: 0 2rem;
 	height: 28rem;
-	background-color: $hsla_L100;
+	background-color: $hsl_L100;
 	border-radius: 1rem;
 }
 // + internet explorer + \\
@@ -277,7 +277,7 @@ header {
 	padding: 0 1.6rem;
 	width: 100%;
 	height: 100vh;
-	background-color: $hsla_L5;
+	background-color: $hsl_L5;
 	background-image: url('../img/church.jpg');
 	background-repeat: no-repeat;
 	background-position: center center;
@@ -299,7 +299,7 @@ header div.wrap_viewport img {
 header div.wrap_viewport div.wrap_svg {
 	margin: 8rem auto 0 auto;
 	max-width: 32rem;
-	fill: $hsla_L100;
+	fill: $hsl_L100;
 }
 
 // Articles
@@ -310,14 +310,14 @@ main {
 }
 section {
 	padding: 6rem 1.6rem 4.8rem 1.6rem;
-	border-bottom: 0.1rem solid $hsla_L78;
+	border-bottom: 0.1rem solid $hsl_L78;
 }
 section article > div {
 	margin-bottom: 4rem;
 }
 section article > div svg {
 	margin: 0 auto;
-	fill: $hsla_brown;
+	fill: $hsl_brown;
 }
 section article p {
 	margin-bottom: 2rem;
@@ -349,18 +349,18 @@ form {
 }
 form textarea,
 form div.wrap_inputs input.mce-suggest {
-	border-color: $hsla_blue;
-	// box-shadow: inset 0 0 0 0.2rem $hsla_blue;
+	border-color: $hsl_blue;
+	// box-shadow: inset 0 0 0 0.2rem $hsl_blue;
 }
 form textarea:focus,
 form div.wrap_inputs input.mce-suggest:focus {
-	border-color: $hsla_blue-D;
-	// box-shadow: inset 0 0 0 0.2rem $hsla_blue-D;
+	border-color: darken($hsl_blue, 21%);
+	// box-shadow: inset 0 0 0 0.2rem darken($hsl_blue, 21%);
 }
 form div.wrap_inputs input.mce-email.error,
 form div.wrap_inputs input.mce-suggest.error {
-	border-color: $hsla_red;
-	// box-shadow: inset 0 0 0 0.2rem $hsla_red;
+	border-color: $hsl_red;
+	// box-shadow: inset 0 0 0 0.2rem $hsl_red;
 }
 form textarea,
 form div.wrap_inputs,
@@ -377,7 +377,7 @@ form div.wrap_boxes {
 	margin-bottom: 4.2rem;
 }
 form div.wrap_boxes p {
-	color: $hsla_L42;
+	color: $hsl_L42;
 }
 form div.wrap_boxes p,
 form div.wrap_boxes label {
@@ -414,15 +414,15 @@ form div.character_counter span {
 	font-weight: 700;
 	letter-spacing: 0.1rem;
 	text-transform: uppercase;
-	color: $hsla_L100;
-	background-color: $hsla_blue;
+	color: $hsl_L100;
+	background-color: $hsl_blue;
 	border-radius: 0.6rem;
 }
 .wrap_response a:hover {
-	background-color: $hsla_L42;
+	background-color: $hsl_L42;
 }
 .wrap_response a:active {
-	background-color: $hsla_L22;
+	background-color: $hsl_L22;
 }
 // + ADDED POST IDEA SUBMISSION + \\
 form div.wrap_inputs {
@@ -466,7 +466,7 @@ div.partners div h6 {
 	margin-bottom: 2rem;
 	font-size: 1.4rem;
 	line-height: 1.2;
-	color: $hsla_L42;
+	color: $hsl_L42;
 }
 div.partners div.col-1 {
 	margin-bottom: 6rem;
