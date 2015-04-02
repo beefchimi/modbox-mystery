@@ -11,10 +11,7 @@
 	%meta{:name => "apple-mobile-web-app-capable", :content => "yes"}
 	%meta{:name => "apple-mobile-web-app-status-bar-style", :content => "black"}
 
-	-# !!! REMOVE FOR LIVE !!!
-	%meta{:name => "robots", :content => "noindex, nofollow"}
-
-	%link{:rel => "stylesheet", :type => "text/css", :href => "assets/css/styles.css?v=7"}
+	%link{:rel => "stylesheet", :type => "text/css", :href => "assets/css/styles.css?v=8"}
 
 	%script
 		= Haml::Engine.new(File.read("dev/haml/partials/_js_fonts.haml")).render

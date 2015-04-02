@@ -104,6 +104,18 @@
 		margin-bottom: 3.2rem;
 		font-size: 1.8rem;
 	}
+	// + list: unordered + \\
+	section article ul {
+		margin-bottom: 3.2rem;
+	}
+	section article ul li {
+		font-size: 1.7rem;
+	}
+/*
+	section article ul li::before {
+		display: block;
+	}
+*/
 	// --- SVG Titles --- \\
 	section article div.wrap_title-1 svg.mod_title-1a {
 		margin-bottom: 0;

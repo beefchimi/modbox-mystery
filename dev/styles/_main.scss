@@ -324,9 +324,32 @@ section article p {
 	font-size: 1.4rem;
 	line-height: 1.6;
 }
+section article p.final_para,
 section article p:last-child {
 	margin-bottom: 0;
 }
+// + list: unordered + \\
+section article ul {
+	margin-bottom: 2rem;
+}
+section article ul li {
+	// position: relative;
+	display: table;
+	margin: 0 auto 1rem auto;
+	font-size: 1.4rem;
+	font-weight: 700;
+	line-height: 1.2;
+}
+/*
+section article ul li::before {
+	display: none;
+	content: "\2022"; // bullet
+	position: absolute;
+	top: -0.2rem;
+	left: -1.8rem;
+	font-size: 1.8rem;
+}
+*/
 // --- SVG Titles --- \\
 section article div.wrap_title-1 svg.mod_title-1a {
 	margin-bottom: 0.6rem;
